@@ -15,20 +15,18 @@ NOTES: 		Don't use any built-in C functions for comparisions. You are free to wr
 
 int validate(int date, int mon, int year) {
 	int i;
-	for (i = 0; year > 0; i++)
-		year /= 10;
-	if (i != 4)
-		return 1;
 	if (mon < 1 || mon > 12) {
 		return 1;
 	}
 	else {
 		if (mon == 2) {
-			if (!(((year % 4) && !(year % 100)) || (year % 400)))  {
+			if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) {
 				if (date < 1 || date > 29) {
 					return 1;
 				}
-				else if (date < 1 || date > 28) {
+			}
+			else {
+				if (date < 1 || date > 28) {
 					return 1;
 				}
 			}
@@ -93,3 +91,5 @@ int isOlder(char *dob1, char *dob2) {
 		}
 	}
 }
+	
+
